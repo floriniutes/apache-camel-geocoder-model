@@ -18,7 +18,6 @@ public class GecodeRoute extends RouteBuilder {
         from("direct:start")
                 .setHeader(Exchange.HTTP_METHOD, constant(HttpMethods.GET))
                 .setHeader(Exchange.HTTP_QUERY, simple("key=${in.headers.key}&address=${in.headers.address}"))
-                .to("https://maps.googleapis.com/maps/api/geocode/json")
                 .to(endPoint)
                 .marshal().json();
 
